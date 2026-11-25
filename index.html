@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://wa.me;">
+    <title>DAPUR XII-2 // BOOTH #04 — School Food Expo 2026</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome (with Subresource Integrity) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Google Fonts: Fraunces, Plus Jakarta Sans, Space Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        surface: '#FFFFFF',
+                        surfaceSoft: '#F7F5F2',
+                        surfaceWarm: '#F3EFEA',
+                        terracotta: '#F1641E',
+                        terracottaDark: '#D95312',
+                        tealDeep: '#124E54',
+                        tealSoft: '#EBF3F3',
+                        ink: '#222222',
+                        inkMuted: '#595959',
+                        borderLight: '#E5E2DC',
+                        matcha: '#2E7D32'
+                    },
+                    fontFamily: {
+                        serif: ['Fraunces', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Space Mono', 'monospace'],
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 12px rgba(34, 34, 34, 0.06)',
+                        'card-hover': '0 12px 28px -6px rgba(34, 34, 34, 0.12)',
+                        'pill': '0 1px 4px rgba(0, 0, 0, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Terpisah -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="font-sans antialiased selection:bg-terracotta selection:text-white pb-24 lg:pb-16">
+
+    <!-- Toast Notification -->
+    <div id="toast-box" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-surfaceSoft text-ink text-xs py-2 px-4 border-b border-borderLight">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center gap-2 font-medium text-inkMuted">
+                <span class="inline-block w-2 h-2 rounded-full bg-terracotta animate-pulse"></span>
+                <span>SCHOOL FOOD EXPO 2026 • EDISI KHUSUS KELAS XII TKJ 2</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-4 text-inkMuted font-medium">
+                <span><i class="fa-regular fa-clock mr-1 text-tealDeep"></i> BUKA: 07.30 — 15.00 WIB</span>
+                <span class="bg-tealSoft text-tealDeep px-2.5 py-0.5 rounded-full font-semibold">BOOTH #04</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marketplace-Style Sticky Header -->
+    <header class="sticky top-0 z-30 bg-surface/95 backdrop-blur-md border-b border-borderLight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <!-- Top Row -->
+            <div class="h-16 flex items-center justify-between gap-4">
+                <!-- Wordmark Brand -->
+                <a href="#" class="flex items-center gap-2.5 shrink-0">
+                    <span class="font-serif text-2xl sm:text-[28px] font-bold tracking-tight text-terracotta">
+                        Dapur XII-2
+                    </span>
+                    <span class="hidden md:inline-block text-xs font-medium text-inkMuted border-l border-borderLight pl-2.5">
+                        SMK HKTI 2 PURWAREJA KLAMPOK
+                    </span>
+                </a>
+
+                <!-- Center Pill Bar -->
+                <div class="hidden md:flex items-center justify-between flex-1 max-w-xl bg-surface border border-ink/25 hover:border-ink/50 rounded-full pl-5 pr-1.5 py-1.5 shadow-pill transition">
+                    <span class="text-xs sm:text-sm text-inkMuted truncate">
+                        Stan Resmi Kelas XII TKJ 2 • Bayar Tunai / QRIS pas ambil di stan
+                    </span>
+                    <a href="#menu-section" class="w-8 h-8 rounded-full bg-terracotta hover:bg-terracottaDark text-white flex items-center justify-center shrink-0 transition" title="Lihat Menu">
+                        <i class="fa-solid fa-utensils text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Right Utility Actions -->
+                <div class="flex items-center gap-2 sm:gap-2.5 shrink-0">
+                    <a href="#location-section" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-ink hover:bg-surfaceSoft px-3 py-2 rounded-full transition">
+                        <i class="fa-solid fa-location-dot text-terracotta"></i>
+                        <span>Booth #04</span>
+                    </a>
+                    <a href="#order-panel" class="inline-flex items-center gap-2 text-xs font-semibold bg-surfaceSoft hover:bg-surfaceWarm text-ink px-3.5 py-2 rounded-full border border-borderLight transition">
+                        <i class="fa-solid fa-bag-shopping text-terracotta"></i>
+                        <span class="hidden sm:inline">Kupon Pesanan</span>
+                    </a>
+                    <!-- Tombol Panel Admin -->
+                    <button type="button" onclick="openAdminModal()" class="relative inline-flex items-center gap-1.5 text-xs font-semibold bg-tealDeep hover:bg-ink text-white px-3.5 py-2 rounded-full shadow-xs transition cursor-pointer">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span>Admin</span>
+                        <span id="admin-notif-badge" class="hidden absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-terracotta text-white font-mono text-[10px] font-bold flex items-center justify-center border-2 border-white">
+                            0
+                        </span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sub-Header Category Links -->
+            <div class="pb-3 pt-0.5 flex items-center justify-start sm:justify-center gap-2 sm:gap-6 overflow-x-auto text-xs font-semibold text-ink">
+                <a href="#menu-section" onclick="filterMenu('all')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-surfaceSoft whitespace-nowrap transition">
+                    <i class="fa-solid fa-border-all text-inkMuted"></i>
+                    <span id="count-nav-all">01. Daftar Menu (7)</span>
+                </a>
+                <a href="#menu-section" onclick="filterMenu('makanan')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-surfaceSoft whitespace-nowrap transition">
+                    <i class="fa-solid fa-bowl-food text-terracotta"></i>
+                    <span id="count-nav-makanan">Makanan (3)</span>
+                </a>
+                <a href="#menu-section" onclick="filterMenu('minuman')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-surfaceSoft whitespace-nowrap transition">
+                    <i class="fa-solid fa-mug-hot text-tealDeep"></i>
+                    <span id="count-nav-minuman">Minuman (4)</span>
+                </a>
+                <a href="#location-section" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-surfaceSoft whitespace-nowrap transition">
+                    <i class="fa-solid fa-map-pin text-inkMuted"></i>
+                    <span>02. Lokasi Booth #04</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Editorial Split Hero Banner -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-6 pb-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+            
+            <!-- Left Primary Feature Banner -->
+            <div class="lg:col-span-8 bg-tealDeep text-white rounded-2xl overflow-hidden shadow-soft grid grid-cols-1 md:grid-cols-12">
+                <div class="md:col-span-7 p-7 sm:p-10 flex flex-col justify-center items-start">
+                    <span class="inline-block text-[11px] font-semibold tracking-wider uppercase bg-white/15 text-white px-3 py-1 rounded-full mb-3">
+                        KEDAI & KIOSK • STAN RESMI
+                    </span>
+                    <h1 class="font-serif text-3xl sm:text-5xl font-semibold tracking-tight leading-[1.12]">
+                        Dapur <span class="italic font-normal">XII-TKJ-2</span>
+                    </h1>
+                    <p class="text-sm text-white/90 mt-3.5 leading-relaxed">
+                        Semua menu disajikan dalam keadaan hangat dan segar, higienis, serta dibanderol dengan harga spesial khusus selama acara expo berlangsung. Yuk, kunjungi stan kami sekarang dan nikmati sajian istimewa yang bikin nagih!
+                    </p>
+                    <div class="mt-6 flex flex-wrap items-center gap-3">
+                        <a href="#menu-section" class="bg-white text-ink hover:bg-surfaceSoft font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full shadow-sm transition">
+                            Lihat Semua Menu
+                        </a>
+                        <span class="text-xs text-white/85 font-medium">
+                            <i class="fa-solid fa-circle-check text-emerald-300 mr-1"></i> Open Pre-Order Hari H
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Visual Collage Side of Hero -->
+                <div class="md:col-span-5 bg-[#E7DFD5] relative min-h-[220px] md:min-h-full p-5 flex flex-col justify-between">
+                    <div class="grid grid-cols-2 gap-2.5 my-auto">
+                        <div class="bg-white rounded-xl p-2 shadow-sm">
+                            <img src="image/cappucino.jpeg" alt="Cappucino Ice" onerror="this.style.display='none'" class="w-full h-24 object-contain rounded-lg">
+                            <p class="text-[11px] font-semibold text-ink text-center mt-1 truncate">Cappucino Ice</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-2 shadow-sm mt-4">
+                            <img src="image/dubai.jpeg" alt="Mochi Dubai" onerror="this.style.display='none'" class="w-full h-24 object-cover rounded-lg">
+                            <p class="text-[11px] font-semibold text-ink text-center mt-1 truncate">Mochi Dubai</p>
+                        </div>
+                    </div>
+                    <div class="mt-3 text-center">
+                        <span class="inline-block bg-white/90 backdrop-blur-xs text-ink text-[11px] font-semibold px-3 py-1 rounded-full shadow-xs">
+                            <span id="hero-menu-count">7 Menu Pilihan Siap Pesan</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Secondary Highlight Card -->
+            <div class="lg:col-span-4 bg-surfaceWarm rounded-2xl p-7 sm:p-8 flex flex-col justify-between border border-borderLight/80 relative overflow-hidden">
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="text-xs font-bold uppercase tracking-wider text-terracotta">LOKASI STAN RESMI</span>
+                        <span class="bg-white text-ink font-mono text-xs font-bold px-3 py-1 rounded-full border border-borderLight shadow-2xs">
+                            SCHOOL EXPO 2026
+                        </span>
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-ink">
+                        BOOTH #04
+                    </h2>
+                    <p class="text-sm text-inkMuted mt-2 leading-relaxed">
+                        Depan Kantin Utara / Samping Panggung • Lapangan Utama Depan Gedung C SMK HKTI 2.
+                    </p>
+                </div>
+
+                <div class="mt-6 pt-5 border-t border-borderLight space-y-2.5">
+                    <div class="flex items-center gap-2.5 text-xs font-medium text-ink">
+                        <span class="w-7 h-7 rounded-full bg-white flex items-center justify-center text-matcha border border-borderLight shrink-0">
+                            <i class="fa-solid fa-check"></i>
+                        </span>
+                        <span>OPEN PRE-ORDER HARI H</span>
+                    </div>
+                    <div class="flex items-center gap-2.5 text-xs font-medium text-ink">
+                        <span class="w-7 h-7 rounded-full bg-white flex items-center justify-center text-tealDeep border border-borderLight shrink-0">
+                            <i class="fa-solid fa-wallet"></i>
+                        </span>
+                        <span>Bayar Tunai / QRIS pas ambil di stan</span>
+                    </div>
+                    <div class="pt-2">
+                        <a href="#location-section" class="inline-flex items-center gap-1.5 text-xs font-bold text-ink hover:text-terracotta transition">
+                            <span>Cek patokan lokasi lengkap</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Main Split Layout: Catalog & Order Ticket -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-2">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <!-- Left Column: Menu Board & Location -->
+            <div class="lg:col-span-7 xl:col-span-8 space-y-12">
+                
+                <!-- Section 01: Katalog Menu -->
+                <section id="menu-section">
+                    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-5 mb-6 border-b border-borderLight">
+                        <div>
+                            <span class="text-xs font-semibold text-terracotta uppercase tracking-wider">KATALOG MENU HARI INI</span>
+                            <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink mt-0.5">Pilihan Makanan & Minuman</h2>
+                        </div>
+
+                        <!-- Category Filter Pills -->
+                        <div class="flex flex-wrap gap-2 text-xs shrink-0">
+                            <button type="button" onclick="filterMenu('all')" id="btn-all" class="filter-tab px-4 py-2 rounded-full bg-ink text-white font-semibold shadow-xs transition cursor-pointer">
+                                SEMUA (<span id="count-all">7</span>)
+                            </button>
+                            <button type="button" onclick="filterMenu('makanan')" id="btn-makanan" class="filter-tab px-4 py-2 rounded-full bg-surfaceSoft text-ink hover:bg-surfaceWarm font-semibold transition cursor-pointer">
+                                MAKANAN (<span id="count-makanan">3</span>)
+                            </button>
+                            <button type="button" onclick="filterMenu('minuman')" id="btn-minuman" class="filter-tab px-4 py-2 rounded-full bg-surfaceSoft text-ink hover:bg-surfaceWarm font-semibold transition cursor-pointer">
+                                MINUMAN (<span id="count-minuman">4</span>)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Menu Grid -->
+                    <div id="menu-container" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Rendered via JS -->
+                    </div>
+                </section>
+
+                <!-- Section 02: Patokan Lokasi Stan -->
+                <section id="location-section" class="bg-surfaceSoft rounded-2xl p-6 sm:p-8 border border-borderLight">
+                    <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b border-borderLight">
+                        <div>
+                            <span class="text-xs text-tealDeep font-bold uppercase tracking-wider">SPOT & DENAH STAN</span>
+                            <h2 class="font-serif text-2xl sm:text-3xl font-semibold text-ink mt-0.5">Patokan Lokasi Booth #04</h2>
+                        </div>
+                        <span class="text-xs font-semibold bg-white text-ink px-3.5 py-1.5 rounded-full border border-borderLight">
+                            LAPANGAN UTAMA DEPAN GEDUNG C SMK HKTI 2
+                        </span>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-5 border border-borderLight flex flex-col sm:flex-row items-start sm:items-center gap-4 shadow-2xs">
+                        <div class="w-12 h-12 rounded-2xl bg-tealDeep text-white font-serif font-bold text-xl flex items-center justify-center shrink-0">
+                            #04
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="text-xs font-bold uppercase tracking-wider text-terracotta">
+                                ARAH MENUJU BOOTH #04 (DAPUR XII-2):
+                            </h3>
+                            <p class="text-sm text-ink leading-relaxed">
+                                Berada di area <strong>Lapangan depan gedung C</strong>, tepat di <strong>Depan Panggung Utama</strong>. Cari stan berhias <strong>"DAPUR XII-2 — BOOTH #04"</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Right Column: Sticky Modern Order Ticket -->
+            <aside id="order-panel" class="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-28">
+                <div class="bg-white border border-borderLight rounded-2xl shadow-soft overflow-hidden">
+                    
+                    <!-- Ticket Top Header -->
+                    <div class="bg-surfaceSoft px-5 py-4 border-b border-borderLight flex items-center justify-between">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] bg-tealDeep text-white px-2.5 py-0.5 rounded-full font-semibold tracking-wide">ORDER TICKET</span>
+                                <span id="ticket-number" class="font-mono text-xs font-bold text-inkMuted">#XII2-048</span>
+                            </div>
+                            <h2 class="font-serif text-xl font-semibold text-ink mt-1">Kupon Catatan Pesanan</h2>
+                        </div>
+                        <button type="button" onclick="clearCart()" class="text-xs font-semibold text-inkMuted hover:text-terracotta underline cursor-pointer transition">
+                            Reset
+                        </button>
+                    </div>
+
+                    <!-- Ticket Body -->
+                    <div class="p-5">
+                        <!-- Cart Items List -->
+                        <div id="cart-items" class="space-y-2.5 max-h-64 overflow-y-auto pr-1 pb-3">
+                            <div class="text-center py-7 px-4 bg-surfaceSoft rounded-xl border border-dashed border-borderLight text-xs text-inkMuted leading-relaxed">
+                                Kupon pesanan masih kosong.<br>Klik tombol <strong class="text-ink">"+ Tambah"</strong> di daftar menu sebelah ya!
+                            </div>
+                        </div>
+
+                        <!-- Receipt Divider -->
+                        <div class="receipt-divider my-4"></div>
+
+                        <!-- Total Row -->
+                        <div class="flex justify-between items-center mb-5 bg-surfaceSoft px-4 py-3.5 rounded-xl border border-borderLight">
+                            <div>
+                                <span class="text-xs font-bold text-ink block">TOTAL PEMBAYARAN</span>
+                                <span class="text-[11px] text-inkMuted">Jangan lupa bayar ya!</span>
+                            </div>
+                            <span id="cart-total" class="font-serif text-2xl font-bold text-ink">Rp 0</span>
+                        </div>
+
+                        <!-- Pre-Order Form (Dilengkapi maxlength & validasi karakter) -->
+                        <form id="preorder-form" onsubmit="sendWhatsAppOrder(event)" class="space-y-3.5" autocomplete="off">
+                            <div>
+                                <label for="buyer-name" class="block text-xs font-semibold text-ink mb-1">NAMA PEMBELI *</label>
+                                <input type="text" id="buyer-name" required maxlength="45" placeholder="Contoh: Bagas / Bu Rina" 
+                                       class="w-full bg-white border border-borderLight rounded-xl px-3.5 py-2.5 text-sm text-ink placeholder:text-inkMuted/60 focus:outline-none focus:border-ink transition">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label for="buyer-class" class="block text-xs font-semibold text-ink mb-1">KELAS / GURU *</label>
+                                    <input type="text" id="buyer-class" required maxlength="30" placeholder="XI IPS 1 / Guru" 
+                                           class="w-full bg-white border border-borderLight rounded-xl px-3.5 py-2.5 text-sm text-ink placeholder:text-inkMuted/60 focus:outline-none focus:border-ink transition">
+                                </div>
+                                <div>
+                                    <label for="pickup-time" class="block text-xs font-semibold text-ink mb-1">JAM AMBIL *</label>
+                                    <select id="pickup-time" 
+                                            class="w-full bg-white border border-borderLight rounded-xl px-3 py-2.5 text-sm text-ink focus:outline-none focus:border-ink transition">
+                                        <option value="Istirahat 1 (09.30)">Istirahat 1 (09.30)</option>
+                                        <option value="Istirahat 2 (12.00)">Istirahat 2 (12.00)</option>
+                                        <option value="Pulang Sekolah (14.30)">Pulang Sekolah</option>
+                                        <option value="Ambil di Booth/Stan">Ambil di Booth/Stan</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="buyer-note" class="block text-xs font-semibold text-ink mb-1">CATATAN TAMBAHAN (OPSIONAL)</label>
+                                <input type="text" id="buyer-note" maxlength="100" placeholder="Misal: Sambal dipisah, es batu dikit" 
+                                       class="w-full bg-white border border-borderLight rounded-xl px-3.5 py-2.5 text-sm text-ink placeholder:text-inkMuted/60 focus:outline-none focus:border-ink transition">
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="pt-2 space-y-2.5">
+                                <button type="submit" 
+                                        class="w-full bg-terracotta hover:bg-terracottaDark text-white font-semibold text-xs sm:text-sm py-3.5 px-5 rounded-full shadow-sm transition flex items-center justify-center gap-2 cursor-pointer">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                                    KIRIM PESANAN KE WHATSAPP
+                                </button>
+
+                                <button type="button" onclick="generateReceiptPreview()" 
+                                        class="w-full bg-white hover:bg-surfaceSoft text-ink border border-ink/25 font-semibold text-xs py-3 px-4 rounded-full transition flex items-center justify-center gap-2 cursor-pointer">
+                                    <i class="fa-solid fa-ticket text-tealDeep"></i>
+                                    LIHAT TIKET STRUK DIGITAL
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <!-- Mobile Sticky Bottom Bar -->
+    <div class="fixed bottom-3 inset-x-3 bg-ink text-white p-3.5 rounded-full shadow-xl lg:hidden z-40 flex items-center justify-between px-5">
+        <div>
+            <span class="text-[10px] text-white/75 uppercase tracking-wider block">KUPON PESANAN (<span id="mobile-count">0</span> ITEM)</span>
+            <span id="mobile-total" class="font-bold text-base text-white">Rp 0</span>
+        </div>
+        <a href="#order-panel" class="bg-terracotta text-white font-semibold text-xs px-4 py-2.5 rounded-full shadow">
+            CEK KUPON ↓
+        </a>
+    </div>
+
+    <!-- Modal 1: Detail Produk -->
+    <div id="product-modal" class="fixed inset-0 bg-ink/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full overflow-hidden shadow-2xl relative border border-borderLight">
+            <button type="button" onclick="closeProductModal()" class="absolute top-3.5 right-3.5 z-10 w-8 h-8 rounded-full bg-white/95 text-ink border border-borderLight font-bold hover:bg-surfaceSoft transition cursor-pointer shadow-xs">
+                ✕
+            </button>
+            <div id="product-modal-content">
+                <!-- Filled dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Struk Digital / Tiket Resmi Booth -->
+    <div id="receipt-modal" class="fixed inset-0 bg-ink/65 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl relative border border-borderLight">
+            <button type="button" onclick="closeReceiptModal()" class="absolute top-3.5 right-3.5 w-8 h-8 rounded-full bg-surfaceSoft text-ink font-bold hover:bg-surfaceWarm transition cursor-pointer">
+                ✕
+            </button>
+
+            <div class="text-center pb-3">
+                <span class="text-[10px] bg-tealSoft text-tealDeep px-3 py-1 rounded-full font-bold uppercase tracking-wider">TIKET PRE-ORDER RESMI</span>
+                <h3 class="font-serif text-2xl font-bold text-ink mt-2">Dapur XII-2</h3>
+                <p class="font-mono text-xs text-inkMuted">BOOTH #04 • SCHOOL FOOD EXPO 2026</p>
+            </div>
+
+            <div class="receipt-divider my-3"></div>
+
+            <div id="receipt-modal-body" class="text-xs space-y-2 py-2">
+                <!-- Filled dynamically -->
+            </div>
+
+            <div class="receipt-divider my-3"></div>
+
+            <p class="text-[11px] text-center text-inkMuted mb-4 leading-relaxed">
+                Screenshot tiket ini dan tunjukkan ke kasir (Alya) di <strong class="text-ink">Booth #04</strong> pas jam ambil biar langsung dilayani!
+            </p>
+
+            <button type="button" onclick="closeReceiptModal()" class="w-full bg-ink hover:bg-terracotta text-white font-semibold text-xs py-3 rounded-full transition cursor-pointer">
+                TUTUP TIKET
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal 3: PANEL ADMIN (Konten dashboard dirender dinamis HANYA setelah verifikasi PIN berhasil) -->
+    <div id="admin-modal" class="fixed inset-0 bg-ink/70 backdrop-blur-xs z-50 hidden items-center justify-center p-3 sm:p-5">
+        <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[92vh] flex flex-col overflow-hidden shadow-2xl border border-borderLight">
+            
+            <!-- Admin Modal Header -->
+            <div class="bg-tealDeep text-white px-6 py-4 flex items-center justify-between shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-200 block">DASHBOARD KASIR TERPROTEKSI • BOOTH #04</span>
+                        <h3 class="font-serif text-xl sm:text-2xl font-semibold">Panel Admin & Kalkulator Kasir</h3>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button type="button" id="admin-logout-btn" onclick="logoutAdmin()" class="hidden text-xs font-semibold bg-white/15 hover:bg-white/25 text-white px-3.5 py-2 rounded-full transition cursor-pointer">
+                        <i class="fa-solid fa-right-from-bracket mr-1"></i>Kunci
+                    </button>
+                    <button type="button" onclick="closeAdminModal()" class="w-9 h-9 rounded-full bg-white/15 hover:bg-terracotta text-white font-bold transition cursor-pointer">
+                        ✕
+                    </button>
+                </div>
+            </div>
+
+            <!-- Container Dinamis Admin (Login Gate atau Dashboard) -->
+            <div id="admin-dynamic-viewport" class="flex-1 overflow-y-auto bg-surfaceSoft/50">
+                <!-- Dirender aman melalui JavaScript setelah autentikasi -->
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto px-4 sm:px-6 mt-16 pt-6 border-t border-borderLight text-xs flex flex-col sm:flex-row justify-between items-center gap-2 text-inkMuted">
+        <p>DAPUR XII-2 // BOOTH #04 — PROJEK KEWIRAUSAHAAN KELAS XII TKJ 2</p>
+        <div class="flex items-center gap-4">
+            <p class="font-medium text-ink">CP KASIR STAN : 0812-3456-7890</p>
+            <button type="button" onclick="openAdminModal()" class="text-tealDeep hover:text-terracotta font-semibold underline cursor-pointer">
+                Panel Admin
+            </button>
+        </div>
+    </footer>
+
+    <!-- JavaScript Terpisah -->
+    <script src="script.js"></script>
+</body>
+</html>

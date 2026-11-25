@@ -1,0 +1,91 @@
+/* ============================================================
+   DAPUR XII-2 // BOOTH #04 — Custom Stylesheet
+   ============================================================ */
+
+body {
+    background-color: #FFFFFF;
+    color: #222222;
+}
+
+/* Pemisah struk halus ala modern receipt */
+.receipt-divider {
+    position: relative;
+    border-top: 1.5px dashed #DCD8D0;
+}
+
+.receipt-divider::before,
+.receipt-divider::after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    width: 16px;
+    height: 16px;
+    background-color: #FFFFFF;
+    border: 1px solid #E5E2DC;
+    border-radius: 9999px;
+}
+
+.receipt-divider::before {
+    left: -29px;
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    transform: rotate(45deg);
+}
+
+.receipt-divider::after {
+    right: -29px;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    transform: rotate(45deg);
+}
+
+/* Animasi pop saat item bertambah atau notifikasi muncul */
+@keyframes popScale {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
+}
+
+.animate-pop {
+    animation: popScale 0.22s ease-out;
+}
+
+/* Animasi masuk banner notifikasi pesanan baru */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slideInRight 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Efek tekan halus pada tombol kalkulator admin */
+.calc-btn:active {
+    transform: scale(0.95);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F7F5F2;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #C9C4BC;
+    border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9E9890;
+}

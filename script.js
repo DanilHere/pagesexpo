@@ -27,13 +27,13 @@ function sanitizeTextInput(raw, maxLen = 60) {
 // PENGATURAN GAMBAR PRODUK & KATALOG TERKUNCI (Object.freeze)
 // ============================================================
 const PRODUCT_IMAGES = Object.freeze({
-    "01": "image/cappucino.jpeg",
-    "02": "image/matchalatte.jpeg",
-    "03": "image/dubai.jpeg",
-    "04": "image/matchastraw.jpeg",
-    "05": "image/escoklat.webp",
-    "06": "image/batagor.jpg",
-    "07": "image/pentol.webp"
+    "01": "cappucino.jpeg",
+    "02": "matchalatte.jpeg",
+    "03": "dubai.jpeg",
+    "04": "matchastraw.jpeg",
+    "05": "escoklat.webp",
+    "06": "batagor.jpg",
+    "07": "pentol.webp"
 });
 
 // Data 7 Produk Kelas XII MIPA 2 (Booth #04) - Dibekukan agar aman
